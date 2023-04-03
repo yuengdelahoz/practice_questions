@@ -47,7 +47,6 @@ class Solution:
 			tmp = _sum % 10
 			if tmp != _sum:
 				_sum = tmp
-			# print(f"remainder: {remainder.val} + {remainder.val} = {_sum}, carry = {c}")
 			remainder = remainder.next
 			ln.next = ListNode(_sum)
 			ln = ln.next
@@ -61,28 +60,52 @@ def print_list(result):
 		result = result.next
 	print()
 
-l1 = ListNode(2)
-l1.next = ListNode(4)
-l1.next.next = ListNode(3)
+def create_Node(n):
+	# last_n = n % 10
+	# n = n//10
+	head = ListNode(0)
+	cur_node = head
+	while n > 9:
+		last_n = n % 10
+		cur_node.val =  last_n
+		cur_node.next = ListNode(0)
+		cur_node = cur_node.next
+		n = n//10
+	cur_node.val =  n
+	
+	return head
+
+n = create_Node(0)
+print_list(n)
+n = create_Node(1)
+print_list(n)
+n = create_Node(23)
+print_list(n)
+n = create_Node(234)
+print_list(n)
+
+# l1 = ListNode(2)
+# l1.next = ListNode(4)
+# l1.next.next = ListNode(3)
 
 
-l2 = ListNode(5)
-l2.next = ListNode(6)
-l2.next.next = ListNode(4)
+# l2 = ListNode(5)
+# l2.next = ListNode(6)
+# l2.next.next = ListNode(4)
 
-print_list(l1)
-print("+")
-print_list(l2)
-result = Solution().addTwoNumbers(l1, l2)
-print_list(result)
+# print_list(l1)
+# print("+")
+# print_list(l2)
+# result = Solution().addTwoNumbers(l1, l2)
+# print_list(result)
 
-res = []
-while result is not None:
-	res.insert(0,result)
-	result = result.next
+# res = []
+# while result is not None:
+	# res.insert(0,result)
+	# result = result.next
 
-for r in res:
-	print(r.val, end="")
-print()
+# for r in res:
+	# print(r.val, end="")
+# print()
 
 
